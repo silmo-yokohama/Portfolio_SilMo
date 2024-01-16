@@ -18,5 +18,34 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [forms ,require("daisyui")],
+    daisyui: {
+        themes: [
+            {
+                myLight: {
+                    "primary": "#00A197",
+                    "secondary": "#FCB545",
+                    "accent": "#ED6D36",
+                    "neutral": "#000",
+                    "base-100": "#F8FDEF",
+                    "info": "#007fff",
+                    "success": "#00c100",
+                    "warning": "#c89700",
+                    "error": "#e50033",
+                },
+                myDark: {
+                    "primary": "#00A197",
+                    "secondary": "#FCB545",
+                    "accent": "#ED6D36",
+                    "neutral": "#000",
+                    "base-100": "#1D232A",
+                    "info": "#007fff",
+                    "success": "#00c100",
+                    "warning": "#c89700",
+                    "error": "#e50033",
+                },
+
+            },
+        ],
+    },
 };
