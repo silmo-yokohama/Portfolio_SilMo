@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import LightThemeIcon from "../SVG/LightThemeIcon";
-import DarkThemeIcon from "../SVG/DarkThemeIcon";
+import DarkThemeIcon from "@/SVG/DarkThemeIcon";
+import LightThemeIcon from "@/SVG/LightThemeIcon";
+import { Themes } from "@/Constants/Themes";
 
-const ThemeChanger = () => {
-  const light = "myLight";
-  const dark = "myDark";
+const ThemeChanger = ({ callback }) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") ?? light);
 
   const handlerToggle = (e) => {
     if (e.target.checked) {
-      setTheme(dark);
+      setTheme(Themes.dark);
+      callback && callback(Themes.dark);
     } else {
-      setTheme(light);
+      setTheme(Themes.light);
+      callback && callback(Themes.light);
     }
   };
 
@@ -26,7 +27,7 @@ const ThemeChanger = () => {
       <input
         type="checkbox"
         className="invisible"
-        checked={theme === dark}
+        checked={theme === Themes.dark}
         onChange={handlerToggle}
       />
 
