@@ -39,7 +39,7 @@ const AdminHeader = (props) => {
         <div className="flex items-center gap-4">
           {auth.user && (
             <span className="hidden text-left lg:block">
-              <span className="block text-sm font-medium text-black">
+              <span className="block text-sm font-medium">
                 {auth.user.name} でログインしています
               </span>
               <span className="block text-xs font-medium">
