@@ -1,12 +1,14 @@
-import { Head } from '@inertiajs/react';
-import React from 'react';
+import GuestHeader from "@/Components/Template/GuestHeader";
+import React from "react";
 
 const GuestLayout = (props) => {
-  const { pageTitle } = props;
+  const { pageTitle, children } = props;
 
   return (
-    <div>
-      <Head title={pageTitle} />
+    <div className="min-h-screen">
+      <GuestHeader />
+
+      {children}
     </div>
   );
 };
