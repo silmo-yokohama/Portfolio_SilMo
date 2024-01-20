@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import DarkThemeIcon from "@/SVG/DarkThemeIcon";
 import LightThemeIcon from "@/SVG/LightThemeIcon";
 import { Themes } from "@/Constants/Themes";
+import { useSelector, useDispatch } from "react-redux";
+import { themeChange } from "@/Redux/ThemeSlice";
 
 const ThemeChanger = ({ callback }) => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? light);
+  const theme = useSelector((state) => state.theme.active);
+  const dispatch = useDispatch();
 
   const handlerToggle = (e) => {
     if (e.target.checked) {
-      setTheme(Themes.dark);
+      dispatch(themeChange(Themes.dark));
       callback && callback(Themes.dark);
     } else {
-      setTheme(Themes.light);
+      dispatch(themeChange(Themes.light));
       callback && callback(Themes.light);
     }
   };
