@@ -1,5 +1,5 @@
-import AdminHeader from "@/Components/Template/AdminHeader";
-import AdminSideBar from "@/Components/Template/AdminSideBar";
+import AdminHeader from "@/Components/Template/Headers/AdminHeader";
+import AdminSideBar from "@/Components/Template/Headers/AdminSideBar";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
 

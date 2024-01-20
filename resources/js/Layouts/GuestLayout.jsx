@@ -1,4 +1,4 @@
-import GuestHeader from "@/Components/Template/GuestHeader";
+import GuestHeader from "@/Components/Template/Headers/GuestHeader";
 import React from "react";
 
 const GuestLayout = (props) => {

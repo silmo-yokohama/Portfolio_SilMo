@@ -6,7 +6,7 @@ const SiteLogo = (props) => {
   const { className, color, ...options } = props;
   const currentTheme = useSelector((state) => state.theme.active);
   const imagePath =
-    currentTheme === Themes.dark
+    currentTheme === Themes.dark || color === "white"
       ? "/images/logo/logo-h-white.png"
       : "/images/logo/logo-h-black.png";
 
