@@ -137,4 +137,20 @@ class WorkController extends Controller
 
     return to_route('admin.works.index');
   }
+
+
+  function destroy($id)
+  {
+    $work = Work::find($id);
+    if (!$work) {
+      return ErrorService::to404();
+    }
+
+    $work->is_deleted = 1;
+    $work->deleted_at = Now();
+
+    $work->save();
+
+    return to_route('admin.works.index');
+  }
 }

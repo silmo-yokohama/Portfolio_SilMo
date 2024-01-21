@@ -1,3 +1,4 @@
+import SubmitButton from "@/Components/Forms/Buttons/SubmitButton";
 import ImageLabel from "@/Components/Template/Forms/ImageLabel";
 import MultiSelectLabel from "@/Components/Template/Forms/MultiSelectLabel";
 import TextAreaLabel from "@/Components/Template/Forms/TextAreaLabel";
@@ -171,9 +172,7 @@ const Create = (props) => {
         </div>
 
         <div className="my-5 text-center md:my-10">
-          <button className="btn btn-wide border bg-primary text-white hover:border-primary hover:bg-base-200 hover:text-current">
-            登録
-          </button>
+          <SubmitButton>更新</SubmitButton>
         </div>
       </form>
     </AdminLayout>

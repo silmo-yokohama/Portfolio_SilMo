@@ -1,3 +1,5 @@
+import DeleteButton from "@/Components/Forms/Buttons/DeleteButton";
+import SubmitButton from "@/Components/Forms/Buttons/SubmitButton";
 import TextInput from "@/Components/Forms/Inputs/TextInput";
 import ImageLabel from "@/Components/Template/Forms/ImageLabel";
 import MultiSelectLabel from "@/Components/Template/Forms/MultiSelectLabel";
@@ -6,6 +8,7 @@ import TextLabel from "@/Components/Template/Forms/TextLabel";
 import AdminSectionHeader from "@/Components/Template/Headers/AdminSectionHeader";
 import { API } from "@/Constants/ApiEndpoint";
 import { createWorkOption, setOptionState } from "@/Functions/API/WorkEvents";
+import { dataDelete } from "@/Functions/CrudRequestHelper";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { useForm } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
@@ -66,7 +69,11 @@ const Edit = (props) => {
       <AdminSectionHeader
         title={`${work.name} を更新`}
         backToRoute={route("admin.works.index")}
-      ></AdminSectionHeader>
+      >
+        <DeleteButton onClick={() => dataDelete(work.id, work.name, "works")}>
+          削除
+        </DeleteButton>
+      </AdminSectionHeader>
 
       <form method="post" onSubmit={handlerOnSubmit}>
         <div className="flex flex-col gap-3 md:gap-5">
@@ -179,9 +186,7 @@ const Edit = (props) => {
         </div>
 
         <div className="my-5 text-center md:my-10">
-          <button className="btn btn-wide border bg-primary text-white hover:border-primary hover:bg-base-200 hover:text-current">
-            更新
-          </button>
+          <SubmitButton>更新</SubmitButton>
         </div>
       </form>
     </AdminLayout>

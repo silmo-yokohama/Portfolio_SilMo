@@ -39,7 +39,7 @@ class WorkService
       ->where('is_deleted', 0)
       ->when($searchText, function ($query, $searchText) {
         return $query->where('name', 'LIKE', "%{$searchText}%");
-      });
+      })->orderBy('updated_at', 'desc');
 
     return $query;
   }
