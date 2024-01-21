@@ -77,6 +77,7 @@ class WorkSkillService
     $query = Skill::query();
     $query
       ->select('id as value', 'name as label')
+      ->where('is_deleted', 0)
       ->whereIn('id', $ids);
 
     return $query->get();

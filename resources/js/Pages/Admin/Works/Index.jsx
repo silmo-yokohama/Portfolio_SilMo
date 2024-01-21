@@ -48,7 +48,7 @@ const Index = (props) => {
         backToRoute={route("admin.dashboard")}
       >
         <LinkButton
-          href={""}
+          href={route("admin.works.create")}
           className="group flex flex-col items-center justify-center px-3"
         >
           <AddIcon size={22} className="t group-hover:fill-accent" />

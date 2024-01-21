@@ -33,6 +33,45 @@ class WorkController extends Controller
   }
 
 
+
+  function create()
+  {
+    return Inertia::render('Admin/Works/Create');
+  }
+
+
+  function store(Request $request)
+  {
+    DB::beginTransaction();
+    try {
+      $work = new Work();
+
+      $work->name = $request->name;
+      $work->url = $request->url;
+      $work->image_path = FileService::overwrite($request->file('image'), $request->imagePath);
+      $work->content = $request->content;
+
+      $work->save();
+
+      $work->categories()->sync($request->categories);
+      $work->tags()->sync($request->tags);
+      $work->skills()->sync($request->skills);
+
+      DB::commit();
+    } catch (\Throwable $th) {
+      DB::rollBack();
+
+      return to_route('admin.works.create')->with([
+        'status' => 'success',
+        'displayMessage' => 'データの保存に失敗しました。やり直してください。',
+        'detailMessage' => $th->getMessage()
+      ]);
+    }
+
+    return to_route('admin.works.index');
+  }
+
+
   function edit($id, Request $request)
   {
     $work = WorkService::getWork($id);
