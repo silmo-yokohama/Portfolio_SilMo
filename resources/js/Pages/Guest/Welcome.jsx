@@ -1,11 +1,10 @@
-import ThemeChanger from "@/Components/Parts/ThemeChanger";
-import { Link, Head } from "@inertiajs/react";
+import GuestHeader from "@/Components/Template/Headers/GuestHeader";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
   return (
     <>
       <div className="h-full">
-        <ThemeChanger />
+        <GuestHeader />
       </div>
     </>
   );

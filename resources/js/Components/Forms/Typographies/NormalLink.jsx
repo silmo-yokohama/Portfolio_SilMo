@@ -6,7 +6,7 @@ const NormalLink = (props) => {
   return (
     <Link
       href={href}
-      className={`link text-primary-content underline underline-offset-2 ${className}`}
+      className={`link text-accent underline underline-offset-2 ${className}`}
     >
       {children}
     </Link>

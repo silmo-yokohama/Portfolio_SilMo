@@ -15,7 +15,6 @@ const Login = (props) => {
     remember: false,
   });
 
-  console.log(errors);
   useEffect(() => {
     document.querySelector("html").classList.add("overflow-hidden");
     controls.start({ opacity: 1, top: 0 });
@@ -34,7 +33,6 @@ const Login = (props) => {
   const handlerLogin = (e) => {
     e.preventDefault();
 
-    console.log(form.data);
     form.post(route("signin"));
   };
 

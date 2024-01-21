@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 const AdminLayout = (props) => {
   const { pageTitle, children } = props;
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="admin flex h-screen">

@@ -41,6 +41,8 @@ Route::prefix('admin/works')
   ->name('admin.works.')
   ->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::post('/{id}/update', 'update')->name('update');
   });
 
 // Route::middleware('auth')->group(function () {

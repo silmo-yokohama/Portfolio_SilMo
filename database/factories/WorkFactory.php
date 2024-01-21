@@ -21,7 +21,7 @@ class WorkFactory extends Factory
 
     return [
       'name' => $this->faker->company(),
-      'image_path' => '/images/no-image.jpg',
+      'image_path' => '/images/no-image.png',
       'created_at' => $createdAt->format('Y-m-d H:i:s'),
       'updated_at' => $updatedAt->format('Y-m-d H:i:s'),
     ];

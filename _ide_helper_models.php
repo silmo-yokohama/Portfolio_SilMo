@@ -115,6 +115,7 @@ namespace App\Models{
  * @property-read int|null $skills_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
  * @property-read int|null $tags_count
+ * @method static \Database\Factories\WorkFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Work newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Work newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Work query()

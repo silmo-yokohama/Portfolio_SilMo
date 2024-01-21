@@ -29,7 +29,7 @@ const AdminListTable = ({ headers, bodies, ...props }) => {
                   return col.isHeader ? (
                     <th
                       key={index}
-                      className={`max-w-xs py-3 ${col.className}`}
+                      className={`min-w-52 bg-base-200 py-3 tracking-widest ${col.className}`}
                     >
                       {col.html}
                     </th>

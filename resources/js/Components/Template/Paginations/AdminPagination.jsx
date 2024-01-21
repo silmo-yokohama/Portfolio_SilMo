@@ -4,8 +4,6 @@ import React from "react";
 const AdminPagination = (props) => {
   const { links } = props;
 
-  console.log(links);
-
   return (
     <div className="flex items-center justify-center">
       {links && links.length > 3 && (
