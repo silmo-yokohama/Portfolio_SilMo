@@ -1,7 +1,8 @@
 import BackArrowIcon from "@/SVG/BackArrowIcon";
-import { Link } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 import React from "react";
 import LinkButton from "../../Forms/Buttons/LinkButton";
+import BackButton from "@/Components/Forms/Buttons/BackButton";
 
 const AdminSectionHeader = (props) => {
   const { title, children, backToRoute } = props;
@@ -10,15 +11,7 @@ const AdminSectionHeader = (props) => {
     <div className="mb-5 flex flex-wrap items-center border-b border-current pb-5">
       {backToRoute && (
         <div className="px-3 md:px-0">
-          <LinkButton
-            href={backToRoute}
-            className="group flex flex-col items-center justify-center px-3"
-          >
-            <BackArrowIcon size={20} className="t group-hover:fill-accent" />
-            <span className="t mx-2 hidden text-sm group-hover:text-accent lg:inline">
-              戻る
-            </span>
-          </LinkButton>
+          <BackButton onClick={() => router.get(backToRoute)}>戻る</BackButton>
         </div>
       )}
 

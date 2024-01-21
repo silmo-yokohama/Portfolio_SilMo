@@ -41,8 +41,11 @@ Route::prefix('admin/works')
   ->name('admin.works.')
   ->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
     Route::get('/{id}/edit', 'edit')->name('edit');
     Route::post('/{id}/update', 'update')->name('update');
+    Route::delete('/{id}/delete', 'destroy')->name('destroy');
   });
 
 // Route::middleware('auth')->group(function () {

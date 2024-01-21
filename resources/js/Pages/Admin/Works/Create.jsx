@@ -1,6 +1,4 @@
-import DeleteButton from "@/Components/Forms/Buttons/DeleteButton";
 import SubmitButton from "@/Components/Forms/Buttons/SubmitButton";
-import TextInput from "@/Components/Forms/Inputs/TextInput";
 import ImageLabel from "@/Components/Template/Forms/ImageLabel";
 import MultiSelectLabel from "@/Components/Template/Forms/MultiSelectLabel";
 import TextAreaLabel from "@/Components/Template/Forms/TextAreaLabel";
@@ -8,28 +6,24 @@ import TextLabel from "@/Components/Template/Forms/TextLabel";
 import AdminSectionHeader from "@/Components/Template/Headers/AdminSectionHeader";
 import { API } from "@/Constants/ApiEndpoint";
 import { createWorkOption, setOptionState } from "@/Functions/API/WorkEvents";
-import { dataDelete } from "@/Functions/CrudRequestHelper";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { useForm } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
 
-const Edit = (props) => {
-  const { work, categories, tags, skills } = props;
+const Create = (props) => {
   const [categoryList, setCategoryList] = useState([]);
   const [tagList, setTagList] = useState([]);
   const [skillList, setSkillList] = useState([]);
 
-  console.log(props);
-
   const form = useForm({
-    name: work.name,
-    imagePath: work.image_path,
+    name: "",
+    imagePath: "/images/no-image.png",
     image: "",
-    url: work.url || "",
-    content: work.content || "",
-    categories: categories.map((i) => i.value),
-    tags: tags.map((i) => i.value),
-    skills: skills.map((i) => i.value),
+    url: "",
+    content: "",
+    categories: [],
+    tags: [],
+    skills: [],
   });
 
   const handlerOnChange = (e) => {
@@ -55,8 +49,7 @@ const Edit = (props) => {
   const handlerOnSubmit = (e) => {
     e.preventDefault();
 
-    console.log(form.data);
-    form.post(route("admin.works.update", { id: work.id }));
+    form.post(route("admin.works.store"));
   };
 
   useEffect(() => {
@@ -67,13 +60,9 @@ const Edit = (props) => {
   return (
     <AdminLayout pageTitle="実績" {...props}>
       <AdminSectionHeader
-        title={`${work.name} を更新`}
+        title="実績を新規作成"
         backToRoute={route("admin.works.index")}
-      >
-        <DeleteButton onClick={() => dataDelete(work.id, work.name, "works")}>
-          削除
-        </DeleteButton>
-      </AdminSectionHeader>
+      ></AdminSectionHeader>
 
       <form method="post" onSubmit={handlerOnSubmit}>
         <div className="flex flex-col gap-3 md:gap-5">
@@ -127,7 +116,6 @@ const Edit = (props) => {
             label="カテゴリー"
             name="category"
             options={categoryList}
-            defaultValue={categories}
             onCreateOption={(data) =>
               createWorkOption(API.createCategory, data, () =>
                 setOptionState(API.getCategory, setCategoryList),
@@ -147,7 +135,6 @@ const Edit = (props) => {
             label="タグ"
             name="tags"
             options={tagList}
-            defaultValue={tags}
             onCreateOption={(data) =>
               createWorkOption(API.createTag, data, () =>
                 setOptionState(API.getTag, setTagList),
@@ -167,7 +154,6 @@ const Edit = (props) => {
             label="スキル"
             name="skills"
             options={skillList}
-            defaultValue={skills}
             onCreateOption={(data) =>
               createWorkOption(API.createSkill, data, () =>
                 setOptionState(API.getSkill, setSkillList),
@@ -193,4 +179,4 @@ const Edit = (props) => {
   );
 };
 
-export default Edit;
+export default Create;
